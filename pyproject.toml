@@ -1,13 +1,16 @@
 [project]
-name = "brain-budget-api"
+name = "fastapi-backend"
 version = "0.2.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "dotenv>=0.9.9",
     "fastapi>=0.136.1",
+    "psycopg[binary]>=3.3.3",
     "pydantic>=2.13.3",
     "python-semantic-release>=10.5.3",
+    "sqlmodel>=0.0.38",
     "uvicorn>=0.46.0",
 ]
 

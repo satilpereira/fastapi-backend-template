@@ -1,5 +1,5 @@
 # ---- Config ----
-APP_NAME=brain-budget-api
+APP_NAME=fastapi-backend
 PORT=8000
 IMAGE=$(APP_NAME):latest
 CONTAINER=$(APP_NAME)-container
@@ -29,10 +29,10 @@ logs:
 
 # ---- Docker Compose ----
 up:
-	docker compose -f docker-compose.yaml up --build
+	docker compose -f docker/docker-compose.yaml up --build
 
 down:
-	docker compose -f docker-compose.yaml down
+	docker compose -f docker/docker-compose.yaml down
 
 # ---- Cleanup ----
 clean:
@@ -40,7 +40,11 @@ clean:
 
 # ---- Debug ----
 shell:
-	docker compose exec api /bin/sh
+	docker compose -f docker/docker-compose.yaml exec api /bin/sh
+db-shell:
+	docker compose -f docker/docker-compose.yaml exec database psql -U postgres_user -d postgres_db
 
+db-logs:
+	docker compose -f docker/docker-compose.yaml logs -f database
 stats:
-	docker stats $(docker compose ps -q)
+	docker compose -f docker/docker-compose.yaml stats $(docker compose -f docker/docker-compose.yaml ps -q)

@@ -1,10 +1,32 @@
 services:
   api:
-    build: .
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
     ports:
       - "8000:8000"
+    networks:
+      - fastapi-backend_network
     deploy:
       resources:
         limits:
           memory: 256M
           cpus: "0.5"
+
+  database:
+    image: postgres:18
+    networks:
+      - fastapi-backend_network
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres_db
+    volumes:
+      - db_data:/var/lib/postgresql
+
+networks:
+  fastapi-backend_network:
+    driver: bridge
+
+volumes:
+  db_data:
