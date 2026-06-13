@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.3.0 (2026-06-13)
+
+### Features
+
+- Add initial FastAPI project structure with health check endpoint
+  ([`706bf3d`](https://github.com/satilpereira/fastapi-backend-template/commit/706bf3d626799621f761d3ce82ea5bcc43855f9a))
+
+
 ## v0.2.1 (2026-04-23)
 
 ### Bug Fixes
